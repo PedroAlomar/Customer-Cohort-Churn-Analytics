@@ -6,6 +6,7 @@ import plotly.express as px
 
 
 DATA_FILE = "telco_customer_churn.csv"
+CLEAN_DATA_FILE = "telco_customer_churn_clean.csv"
 TENURE_GROUPS = ["0-12 meses", "13-24 meses", "25-48 meses", "49-72 meses"]
 CONTRACT_ORDER = ["Month-to-month", "One year", "Two year"]
 CHURN_ORDER = ["No", "Yes"]
@@ -201,6 +202,10 @@ def main():
     )
     if df["Tenure_Group"].isna().any() or df["Contract"].isna().any():
         raise ValueError("Some customers could not be assigned to a tenure group or contract.")
+
+    clean_dataset_path = dataset_path.with_name(CLEAN_DATA_FILE)
+    df.to_csv(clean_dataset_path, index=False)
+    print(f"Cleaned dataset exported to: {clean_dataset_path}")
 
     # 6. Baseline Churn
     print("\n=== Baseline Churn ===")
@@ -524,3 +529,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
