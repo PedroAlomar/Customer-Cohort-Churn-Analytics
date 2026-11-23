@@ -526,8 +526,21 @@ def main():
     )
     fig_high_risk.show()
 
+    print("\nCOLUMNAS:")
+    print(df.columns.tolist())
+
+    print("\nTIPOS DE DATOS:")
+    print(df.dtypes)
+
+    print("\nPRIMEROS 15 REGISTROS:")
+    print(df.head(15).to_string(index=False))
+
+    print("\nCANTIDAD DE REGISTROS:")
+    print(len(df))
+
+    print("\nVALORES NULOS:")
+    print(df.isnull().sum())
+
 
 if __name__ == "__main__":
     main()
-
-
